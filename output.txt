@@ -1,0 +1,2 @@
+Solução do sistema: X = [2.750, 3.500, 3.250]
+Determinante: 4.0000
