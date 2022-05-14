@@ -1,19 +1,21 @@
 det = 1
 
 def leitor(inputFile='input.txt'):
-    aberto = open(inputFile, encoding='utf-8').readlines()
+    config = open(inputFile, encoding='utf-8').readlines()
+    inputA = open("A.txt", encoding='utf-8').readlines()
+    inputB = open("B.txt", encoding='utf-8').readlines()
     global A, B, n, ICOD, IDET, TOLm
     A = []
     B = []
     try:
-        n = int(aberto[0][2:])
-        ICOD = int(aberto[1][5:])
-        IDET = int(aberto[2][5:])
-        TOLm = float(aberto[3][5:])
+        n = int(config[0][2:])
+        ICOD = int(config[1][5:])
+        IDET = int(config[2][5:])
+        TOLm = float(config[3][5:])
         print(f'n = {n}\nICOD = {ICOD}\nIDET = {IDET}\nTOLm = {TOLm}\n')
-        for linha in aberto[5:-n-1]: # vai da quinta linha ate logo antes de comecar b
+        for linha in inputA: # Lê o arquivo de input da matriz A
             A.append([int(x) for x in linha.split(' ')])
-        for linha in aberto[6+n:]: # vai da quinta linha ate logo antes de comecar b
+        for linha in inputB: # Lê o arquivo de input do vetor B
             B.append(int(linha))
     except:
         print('O arquivo de input não foi devidamente escrito. Por favor, leia as instruções de uso em: "linkGitHUb" ')
@@ -75,7 +77,7 @@ def LU():
         det *= A[k][k]
     if det == 0:
         print("Não é possível realizar a decomposição LU para matrizes singulares!\nPor favor utilize outro algoritmo.")
-        return 1
+        return 2
     else:
         return (BackwardSubstitution(A, LUForwardSubstitution(A, B)))
 
@@ -93,7 +95,7 @@ def Cholesky():
             A[i][i] = (A[i][i] - temp)**0.5
         else: 
             print("Só é possível realizar a decomposição de Cholesky para matrizes positivas definidas!\nPor favor utilize outro algoritmo.")
-            return 1
+            return 2
 
         for j in range(i + 1, n):
             temp = 0
@@ -131,7 +133,7 @@ def Jacobi():
                 NewX[i] = temp # Salva o termo calculado no vetor X mais recente
             except:
                 print("A matriz inserida não é válida para o método de Jacobi, pois existe zero na diagonal principal.\nPor favor utilize outro algoritmo.")
-                return 1, 1, 1
+                return 2, 2, 2
 
         normaDif, normaNovo = 0, 0 # Normas calculadas para obter o novo residuo
         for i in range(n):
@@ -140,7 +142,7 @@ def Jacobi():
                 normaNovo += NewX[i]**2
             except:
                 print("A matriz inserida não é válida para o método de Jacobi!\nPor favor utilize outro algoritmo.")
-                return 1, 1, 1
+                return 3, 3, 3
 
         normaDif = normaDif**(0.5)
         normaNovo = normaNovo**(0.5)
@@ -179,7 +181,7 @@ def GaussSeidel():
                 normaNovo += NewX[i]**2
             except:
                 print("A matriz inserida não é válida para o método de GaussSeidel!")
-                return 1, 1, 1
+                return 2, 2, 2
 
         normaDif = normaDif**(0.5)
         normaNovo = normaNovo**(0.5)
@@ -204,7 +206,7 @@ def WriteVector(X, n):
     file.write(string)
     
 
-leitor("test.txt")
+leitor()
 
 
 with open('output.txt', 'w', encoding='utf-8') as file:
@@ -214,11 +216,23 @@ with open('output.txt', 'w', encoding='utf-8') as file:
         if type(X)!= int:
             file.write("Solução do sistema: X = [")
             WriteVector(X, 3)
+        elif X == 1:
+            file.write("Não é possível realizar a decomposição LU para matrizes com zero na diagonal principal!" +
+             "\nPor favor utilize outro algoritmo.")
+        elif X == 2:
+            file.write("Não é possível realizar a decomposição LU para matrizes singulares!" +
+            "\nPor favor utilize outro algoritmo.")
     elif ICOD == 2:
         X = Cholesky()
         if type(X)!= int:
             file.write("Solução do sistema: X = [")
             WriteVector(X, 3)
+        elif X == 1:
+            file.write("Não é possível realizar a decomposição de Cholesky para matrizes assimétricas!" +
+            "\nPor favor utilize outro algoritmo.")
+        elif X == 2:
+            file.write("Só é possível realizar a decomposição de Cholesky para matrizes positivas definidas!" + 
+            "\nPor favor utilize outro algoritmo.")
     elif ICOD == 3:
         X, HistResiduo, numIter = Jacobi()
         if type(X)!= int:
@@ -228,6 +242,15 @@ with open('output.txt', 'w', encoding='utf-8') as file:
             file.write(str)
             file.write("\nHistórico do resíduo: X = [")
             WriteVector(HistResiduo, 5)
+        elif X == 1:
+            file.write("Não é possível realizar o método de Jacobi para matrizes que não são diagonal dominantes!"
+            + "\nPor favor utilize outro algoritmo.")
+        elif X == 2:
+            file.write("A matriz inserida não é válida para o método de Jacobi, pois existe zero na diagonal principal." +
+            "\nPor favor utilize outro algoritmo.")
+        elif X == 3:
+            file.write("A matriz inserida não é válida para o método de Jacobi!" +
+            "\nPor favor utilize outro algoritmo.")
     elif ICOD == 4:
         X, HistResiduo, numIter = GaussSeidel()
         if type(X)!= int:
@@ -237,10 +260,17 @@ with open('output.txt', 'w', encoding='utf-8') as file:
             file.write(str)
             file.write("\nHistórico do resíduo: X = [")
             WriteVector(HistResiduo, 5)
-    if (type(X)!= int) and (IDET >= 0):
+        elif X == 1:
+            file.write("A matriz inserida não é válida para o método de Gauss-Seidel, pois existe zero na diagonal principal." + 
+            "\nPor favor utilize outro método.")
+        elif X == 2:
+            file.write("A matriz inserida não é válida para o método de GaussSeidel!")
+
+    if (type(X)!= int) and (IDET > 0):
         if ICOD == 1 or ICOD == 2:
             str = f"\nDeterminante: %.4f"%det
             file.write(str)
         else:
-            file.write("\nA técnica de obter a solução do sistema não criou caminhos para calcularmos o determinante! Por favor, utilize outro algoritmo.")
+            file.write("\nA técnica de obter a solução do sistema não criou caminhos para calcularmos o determinante! " +
+             "Por favor, utilize outro algoritmo.")
 
