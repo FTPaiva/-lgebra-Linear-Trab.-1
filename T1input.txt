@@ -1,0 +1,4 @@
+n=4
+ICOD=4
+IDET=0
+TOLm=0.0001

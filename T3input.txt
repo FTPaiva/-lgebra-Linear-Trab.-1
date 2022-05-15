@@ -1,0 +1,11 @@
+# ICOD 1-Inter. 2. Regressão
+1
+# N número de pontos conhecidos
+3
+# Coordenadas dos pontos
+# x y
+1.0 2.0
+2.5 3.5
+4.0 8.0
+# coordenada x para estimar y
+3.25

@@ -1,9 +1,9 @@
 det = 1
 
-def leitor(inputFile='input.txt'):
+def leitor(inputFile='T1input.txt'):
     config = open(inputFile, encoding='utf-8').readlines()
-    inputA = open("A.txt", encoding='utf-8').readlines()
-    inputB = open("B.txt", encoding='utf-8').readlines()
+    inputA = open("T1A.txt", encoding='utf-8').readlines()
+    inputB = open("T1B.txt", encoding='utf-8').readlines()
     global A, B, n, ICOD, IDET, TOLm
     A = []
     B = []
@@ -209,7 +209,7 @@ def WriteVector(X, n):
 leitor()
 
 
-with open('output.txt', 'w', encoding='utf-8') as file:
+with open('T1output.txt', 'w', encoding='utf-8') as file:
 
     if ICOD == 1:
         X = LU()
@@ -265,6 +265,9 @@ with open('output.txt', 'w', encoding='utf-8') as file:
             "\nPor favor utilize outro método.")
         elif X == 2:
             file.write("A matriz inserida não é válida para o método de GaussSeidel!")
+    else:
+        file.write("O valor de ICOD fornecido não é válido! Para mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1")
+        raise Exception("O valor de ICOD fornecido não é válido! Para mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1")
 
     if (type(X)!= int) and (IDET > 0):
         if ICOD == 1 or ICOD == 2:
