@@ -1,2 +1,2 @@
-Pelo método de Lagrange de interpolação, temos:
-Valor estimado de y para x=3.25 é 5.375
+Por Regressão Linear, temos:
+Valor estimado de y para x=1.0 é 1.75
