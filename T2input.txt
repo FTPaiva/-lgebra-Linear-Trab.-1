@@ -1,0 +1,8 @@
+# Ordem N da matriz A
+3
+# ICOD 1 - Método de potência. 2 - Método de Jacobi.
+1
+# IDET 0 - Não calcula determinante. Outro número - Calcula determinante.
+0
+# TOLm tolerância máxima para os métodos iterativos.
+0.0001

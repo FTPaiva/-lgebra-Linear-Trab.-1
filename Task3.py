@@ -159,8 +159,8 @@ with open('T3output.txt', 'w', encoding='utf-8') as file:
         print(f"Por Regressão Linear, temos:\nValor estimado de y para x={x_target} é {result}")
         file.write(f"Por Regressão Linear, temos:\nValor estimado de y para x={x_target} é {result}")
     else:
-        print("Por favor, configure ICOD=1 ou ICOD=2.\nPara mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1 ")
-        file.write("Por favor, configure ICOD=1 ou ICOD=2.\nPara mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1 ")
+        print("Por favor, configure ICOD=1, ICOD=2. ou ICOD = 3\nPara mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1 ")
+        file.write("Por favor, configure ICOD=1, ICOD=2 ou ICOD = 3.\nPara mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1 ")
 
 
 ''' 

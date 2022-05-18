@@ -1,0 +1,3 @@
+Pelo método de potência, temos:
+Autovalor estimado = 1.538237017681686
+Autovetor estimado para o autovalor encontrado = [1, 2.6916740162402317, 2.4990216369946627]T
