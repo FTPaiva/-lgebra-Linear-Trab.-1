@@ -1,3 +1,4 @@
-Pelo método de potência, temos:
-Autovalor estimado = 1.538237017681686
-Autovetor estimado para o autovalor encontrado = [1, 2.6916740162402317, 2.4990216369946627]T
+Pelo método de Jacobi, temos:
+Matriz dos autovalores estimados = [[1.0, 0, 0], [0, 1.539, 0], [0, 0, 0.461]]
+Matriz dos autovetores estimados para os autovalores encontrados = [[0.928, 0.263, 0.263], [-0.0, 0.707, -0.707], [-0.371, 0.657, 0.657]]
+O número de iterações necessárias para obter os resultados foi 8
