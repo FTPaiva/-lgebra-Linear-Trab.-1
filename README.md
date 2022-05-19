@@ -16,7 +16,7 @@ Programa em Python para solução de problemas de Álgebra Linear.
 
 1. Ordem n do sistema de equações;
 2. ICOD relativo ao método de análise;
-3. IDET;
+3. IDET (maior que 0 calcula determinante, caso 0, não calcula);
 4. Matriz A;
 5. Vetor B;
 6. TOLm (Tolerância máxima utilizada para os métodos iterativos);
@@ -31,23 +31,22 @@ Programa em Python para solução de problemas de Álgebra Linear.
 
 ### O usuário pode escolher entre os métodos:
 
-1. Decomposição LU (ICOD = 1);
-2. Decomposição de Cholesky (ICOD = 2);
+1. Método da Potência;
+2. Método de Jacobi (ICOD = 2);
 
 ### INPUTS (arquivo de entrada):
 
-1. Ordem n do sistema de equações;
+1. Ordem n da matriz A (quadrada);
 2. ICOD relativo ao método de análise;
-3. IDET;
+3. IDET (maior que 0 calcula determinante, caso 0, não calcula);
 4. Matriz A;
-5. Vetor B;
-6. TOLm (Tolerância máxima utilizada para os métodos iterativos);
+5. TOLm (Tolerância máxima utilizada para os métodos iterativos);
 
 ### OUTPUTS (arquivo de saída):
-1. Solução X do sistema;
+1. Autovalores e autovetores da matriz A;
 2. Avisos sobre erros de uso (quando presentes);
 3. Determinante (quando solicitado);
-4. Número de iterações e histórico do TOL no caso dos métodos iterativos;
+4. Número de iterações para convergência;
 
 ## Task 03:
 
