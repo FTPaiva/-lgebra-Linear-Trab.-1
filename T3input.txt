@@ -1,5 +1,4 @@
-# ICOD 1-Inter. 2. Regressão 3. Regressão Multilinear
-3
+# ICOD 1-Inter. 2. Regressão Multilinear 3. Regressão 
 # N número de pontos conhecidos
 3
 # Coordenadas dos pontos
