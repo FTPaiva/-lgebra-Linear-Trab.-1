@@ -161,15 +161,4 @@ with open('T3output.txt', 'w', encoding='utf-8') as file:
     else:
         print("Por favor, configure ICOD=1, ICOD=2. ou ICOD = 3\nPara mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1 ")
         file.write("Por favor, configure ICOD=1, ICOD=2 ou ICOD = 3.\nPara mais informações, leia as instruções de uso em: https://github.com/FTPaiva/AlgebraLinearTrab1 ")
-
-
-''' 
-def transpose(M):
-    for i in range(len(M)):
-        for j in range(len(M[0])):
-            if i > j:
-                temp = M[i][j]
-                M[i][j] = M[j][i]
-                M[j][i] = temp
-    return M
-'''
+ 
