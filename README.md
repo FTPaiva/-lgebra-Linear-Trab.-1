@@ -31,7 +31,7 @@ Programa em Python para solução de problemas de Álgebra Linear.
 
 ### O usuário pode escolher entre os métodos:
 
-1. Método da Potência;
+1. Método da Potência (ICOD = 1);
 2. Método de Jacobi (ICOD = 2);
 
 ### INPUTS (arquivo de entrada):
