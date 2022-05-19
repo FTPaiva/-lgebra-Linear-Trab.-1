@@ -1,8 +1,6 @@
 # Álgebra Linear Computacional - Trabalho 1
 Primeiro trabalho para avaliação da disciplina Álgebra Linear Computacional COC473.
 
-Programa em Python para solução de problemas de Álgebra Linear.
-
 ## Task 01:
 
 ### O usuário pode escolher entre os métodos:
